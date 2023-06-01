@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 /* ====================================================
- * データをカテゴリ毎に分類する
+ * データをカテゴリ毎に分類して、表示数上限に数を合わせる
  * ==================================================== */
 const categorize_posts = (posts, category) => {
   const postData = posts.posts.flatMap(post => post.data);
