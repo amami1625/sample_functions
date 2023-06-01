@@ -5,13 +5,11 @@ const characters = 40; // 投稿のタイトルの文字数の表示上限
 window.addEventListener('DOMContentLoaded', () => {
   fetch(jsonPath)
   .then(res => res.json())
-  .then(resJson => {
-    const postData = resJson.posts.flatMap(post => post.data);
-    generate_article(postData);
-  });
+  .then(resJson => generate_article(resJson));
 });
 
-const generate_article = (postData) => {
+const generate_article = (resJson) => {
+  const postData = resJson.posts.flatMap(post => post.data);
   const newsData = postData.filter(data => data.category === 'news').slice(0, postsPerPage);
   const topicsData = postData.filter(data => data.category === 'topics').slice(0, postsPerPage);
   let newsHTML = '';
